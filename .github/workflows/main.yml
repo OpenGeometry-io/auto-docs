@@ -19,6 +19,7 @@ jobs:
         with:
           token: ${{ secrets.PUSH_TOKEN }}
           target-branch: docs
+          subdirectory: .
 
           repos: |
             - owner: OpenGeometry-io

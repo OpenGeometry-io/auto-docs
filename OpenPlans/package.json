@@ -1,0 +1,53 @@
+{
+  "name": "@opengeometry/openplans",
+  "version": "0.0.21",
+  "author": "Vishwajeet Mane",
+  "description": "Create 2D Drawings with OpenPlans",
+  "main": "./index.js",
+  "type": "module",
+  "types": "./types/",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "clean": "rimraf dist",
+    "build-examples": "vite build",
+    "build": "npm run clean && rollup -c",
+    "cpy-pkg-json": "cp package.json dist/package.json && cp README.md dist/README.md",
+    "pre-prepare": "npm run build && npm run cpy-pkg-json",
+    "release": "npm run pre-prepare && cd dist && npm publish"
+  },
+  "keywords": [
+    "openplans",
+    "opengeometry",
+    "architecture",
+    "design",
+    "cad",
+    "geometry"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@opengeometry/openglyph": "^0.0.6"
+  },
+  "peerDependencies": {
+    "three": "^0.168.0",
+    "@types/three": "^0.168.0",
+    "camera-controls": "^2.9.0",
+    "lil-gui": "^0.19.2"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@types/dat.gui": "^0.7.7",
+    "@types/three": "^0.173.0",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.34.8",
+    "stats.js": "^0.17.0",
+    "tslib": "^2.8.1",
+    "vite": "^5.4.7"
+  },
+  "publishConfig": {
+    "directory": "dist"
+  }
+}
