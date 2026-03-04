@@ -1,26 +1,26 @@
-name: Aggregate Documentation
+name: Aggregate Docs
 
 on:
   workflow_dispatch:
 
 concurrency:
-  group: aggregate-opengeometry-docs
+  group: aggregate-mintlify-docs
   cancel-in-progress: true
 
 jobs:
   aggregate-docs:
     runs-on: ubuntu-latest
-    name: Aggregate mintlify docs
+
     steps:
-      - name: Clone repo
+      - name: Checkout base repo
         uses: actions/checkout@v4
-      - name: Run mintlify action
+
+      - name: Run Mintlify multirepo action
         uses: mintlify/mintlify-multirepo-action@v0.15
         with:
           token: ${{ secrets.PUSH_TOKEN }}
           target-branch: docs
           subdirectory: .
-
           repos: |
             - owner: OpenGeometry-io
               repo: OpenGeometry
