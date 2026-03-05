@@ -1,0 +1,20 @@
+{
+  "sources": [
+    {
+      "owner": "OpenGeometry-io",
+      "repo": "OpenGeometry",
+      "ref": "main",
+      "docs_subdirectory": "docs",
+      "target_folder": "opengeometry",
+      "product_tab_label": "OpenGeometry kernel"
+    },
+    {
+      "owner": "OpenGeometry-io",
+      "repo": "OpenPlans",
+      "ref": "main",
+      "docs_subdirectory": "docs",
+      "target_folder": "openplans",
+      "product_tab_label": "OpenPlans"
+    }
+  ]
+}

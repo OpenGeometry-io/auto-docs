@@ -1,6 +1,9 @@
 name: Aggregate Docs
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 concurrency:
@@ -15,19 +18,43 @@ jobs:
       - name: Checkout base repo
         uses: actions/checkout@v4
 
-      - name: Run Mintlify multirepo action
-        uses: mintlify/mintlify-multirepo-action@v0.15
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          token: ${{ secrets.PUSH_TOKEN }}
-          target-branch: docs
-          subdirectory: .
-          repos: |
-            - owner: OpenGeometry-io
-              repo: OpenGeometry
-              subdirectory: docs
-              prefix: opengeometry
+          node-version: 20
 
-            - owner: OpenGeometry-io
-              repo: OpenPlans
-              subdirectory: docs
-              prefix: openplans
+      - name: Install Mint CLI
+        run: npm install -g mint
+
+      - name: Aggregate external docs
+        env:
+          PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
+        run: node scripts/aggregate-docs.mjs --output-dir .aggregated-site
+
+      - name: Validate links in aggregated output
+        run: cd .aggregated-site && mint broken-links
+
+      - name: Publish aggregated docs to docs branch
+        env:
+          PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          if [ ! -f ".aggregated-site/docs.json" ]; then
+            echo "Missing .aggregated-site/docs.json"
+            exit 1
+          fi
+
+          publish_dir="$(mktemp -d)"
+          cp -R .aggregated-site/. "${publish_dir}/"
+
+          cd "${publish_dir}"
+          git init
+          git checkout -b docs
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          touch .nojekyll
+          git add .
+          git commit -m "docs: aggregate multi-repo docs"
+          git remote add origin "https://x-access-token:${PUSH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push --force origin docs
