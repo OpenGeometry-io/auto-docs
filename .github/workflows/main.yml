@@ -1,60 +1,33 @@
-name: Aggregate Docs
+name: Aggregate Documentation
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 concurrency:
-  group: aggregate-mintlify-docs
+  group: aggregate-opengeometry-docs
   cancel-in-progress: true
 
 jobs:
   aggregate-docs:
     runs-on: ubuntu-latest
-
+    name: Aggregate mintlify docs
     steps:
-      - name: Checkout base repo
+      - name: Clone repo
         uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Run mintlify action
+        uses: mintlify/mintlify-multirepo-action@v0.15
         with:
-          node-version: 20
+          token: ${{ secrets.PUSH_TOKEN }}
+          target-branch: docs
+          subdirectory: .
 
-      - name: Install Mint CLI
-        run: npm install -g mint
+          repos: |
+            - owner: OpenGeometry-io
+              repo: OpenGeometry
+              subdirectory: docs
+              prefix: opengeometry
 
-      - name: Aggregate external docs
-        env:
-          PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
-        run: node scripts/aggregate-docs.mjs --output-dir .aggregated-site
-
-      - name: Validate links in aggregated output
-        run: cd .aggregated-site && mint broken-links
-
-      - name: Publish aggregated docs to docs branch
-        env:
-          PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
-        run: |
-          set -euo pipefail
-
-          if [ ! -f ".aggregated-site/docs.json" ]; then
-            echo "Missing .aggregated-site/docs.json"
-            exit 1
-          fi
-
-          publish_dir="$(mktemp -d)"
-          cp -R .aggregated-site/. "${publish_dir}/"
-
-          cd "${publish_dir}"
-          git init
-          git checkout -b docs
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          touch .nojekyll
-          git add .
-          git commit -m "docs: aggregate multi-repo docs"
-          git remote add origin "https://x-access-token:${PUSH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git push --force origin docs
+            - owner: OpenGeometry-io
+              repo: OpenPlans
+              subdirectory: docs
+              prefix: openplans

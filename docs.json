@@ -8,80 +8,229 @@
     "dark": "#15803D"
   },
   "favicon": "/favicon.svg",
+  "metadata": {
+    "timestamp": true
+  },
   "navigation": {
-    "tabs": [
+    "products": [
       {
-        "tab": "Guides",
-        "groups": [
+        "product": "OpenGeometry Kernel",
+        "icon": "cloud",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "SDK",
+              "href": "https://npmjs.com/openGeometry",
+              "icon": "npm" 
+            },
+            {
+              "anchor": "Discord",
+              "href": "https://discord.gg/openGeometry",
+              "icon": "discord"
+            },
+            {
+              "anchor": "Blog",
+              "href": "https://openGeometry.com/blog",
+              "icon": "newspaper"
+            }
+          ]
+        },
+        "tabs": [
           {
-            "group": "Getting started",
-            "pages": [
-              "index",
-              "quickstart",
-              "development"
+            "tab": "Documentation",
+            "groups": [
+              {
+                "group": "Introduction",
+                "pages": [
+                  "OpenGeometry/what-is-opengeometry",
+                  "OpenGeometry/installation",
+                  "OpenGeometry/quickstart"
+                ]
+              },
+              {
+                "group": "Core Concepts",
+                "pages": [
+                  "OpenGeometry/concepts/architecture",
+                  "OpenGeometry/concepts/brep",
+                  "OpenGeometry/concepts/scene-graph"
+                ]
+              },
+              {
+                "group": "Integration",
+                "pages": [
+                  "OpenGeometry/integration/threejs",
+                  "OpenGeometry/integration/examples"
+                ]
+              }
             ]
           },
           {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+            "tab": "API Reference",
+            "groups": [
+              {
+                "group": "2D Primitives",
+                "pages": [
+                  "OpenGeometry/api/primitives/line",
+                  "OpenGeometry/api/primitives/arc",
+                  "OpenGeometry/api/primitives/rectangle",
+                  "OpenGeometry/api/primitives/polyline",
+                  "OpenGeometry/api/primitives/curve"
+                ]
+              },
+              {
+                "group": "3D Shapes",
+                "pages": [
+                  "OpenGeometry/api/shapes/polygon",
+                  "OpenGeometry/api/shapes/cylinder",
+                  "OpenGeometry/api/shapes/cuboid",
+                  "OpenGeometry/api/shapes/sphere",
+                  "OpenGeometry/api/shapes/wedge",
+                  "OpenGeometry/api/shapes/sweep",
+                  "OpenGeometry/api/shapes/opening"
+                ]
+              },
+              {
+                "group": "Operations",
+                "pages": [
+                  "OpenGeometry/api/operations/extrude",
+                  "OpenGeometry/api/operations/offset",
+                  "OpenGeometry/api/operations/sweep",
+                  "OpenGeometry/api/operations/triangulate"
+                ]
+              },
+              {
+                "group": "Scene & Export",
+                "pages": [
+                  "OpenGeometry/api/scene/scene-management",
+                  "OpenGeometry/api/export/projection",
+                  "OpenGeometry/api/export/pdf"
+                ]
+              }
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
-        "groups": [
+        "product": "OpenPlans",
+        "icon": "chart-bar",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "SDK",
+              "href": "https://npmjs.com/openPlans",
+              "icon": "npm" 
+            },
+            {
+              "anchor": "Discord",
+              "href": "https://discord.gg/openPlans",
+              "icon": "discord"
+            },
+            {
+              "anchor": "Blog",
+              "href": "https://openPlans.com/blog",
+              "icon": "newspaper"
+            }
+          ]
+        },
+        "tabs": [
           {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
+            "tab": "Documentation",
+            "groups": [
+              {
+                "group": "Getting Started",
+                "pages": [
+                  "OpenPlans/introduction",
+                  "OpenPlans/installation",
+                  "OpenPlans/quickstart"
+                ]
+              },
+              {
+                "group": "Core Concepts",
+                "pages": [
+                  "OpenPlans/concepts/overview",
+                  "OpenPlans/concepts/primitives",
+                  "OpenPlans/concepts/elements",
+                  "OpenPlans/concepts/shapes",
+                  "OpenPlans/concepts/layouts"
+                ]
+              },
+              {
+                "group": "Guides",
+                "pages": [
+                  "OpenPlans/guides/creating-floor-plans",
+                  "OpenPlans/guides/working-with-primitives",
+                  "OpenPlans/guides/architectural-elements",
+                  "OpenPlans/guides/3d-shapes",
+                  "OpenPlans/guides/2d-views",
+                  "OpenPlans/guides/dimensions-and-glyphs",
+                  "OpenPlans/guides/json-generation"
+                ]
+              },
+              {
+                "group": "Examples",
+                "pages": [
+                  "OpenPlans/examples/basic-floor-plan",
+                  "OpenPlans/examples/doors-and-windows",
+                  "OpenPlans/examples/custom-elements"
+                ]
+              }
             ]
           },
           {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+            "tab": "API Reference",
+            "groups": [
+              {
+                "group": "Core",
+                "pages": [
+                  "OpenPlans/api/openplans",
+                  "OpenPlans/api/open-geometry"
+                ]
+              },
+              {
+                "group": "Primitives",
+                "pages": [
+                  "OpenPlans/api/primitives/line",
+                  "OpenPlans/api/primitives/arc",
+                  "OpenPlans/api/primitives/rectangle",
+                  "OpenPlans/api/primitives/polyline"
+                ]
+              },
+              {
+                "group": "Elements",
+                "pages": [
+                  "OpenPlans/api/elements/door",
+                  "OpenPlans/api/elements/window",
+                  "OpenPlans/api/elements/slab",
+                  "OpenPlans/api/elements/stair",
+                  "OpenPlans/api/elements/board"
+                ]
+              },
+              {
+                "group": "Shapes",
+                "pages": [
+                  "OpenPlans/api/shapes/cuboid",
+                  "OpenPlans/api/shapes/cylinder"
+                ]
+              },
+              {
+                "group": "Layouts",
+                "pages": [
+                  "OpenPlans/api/layouts/paper-frame"
+                ]
+              },
+              {
+                "group": "Utilities",
+                "pages": [
+                  "OpenPlans/api/utilities/dimensions",
+                  "OpenPlans/api/utilities/glyphs",
+                  "OpenPlans/api/utilities/camera"
+                ]
+              }
             ]
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/logo/light.svg",
@@ -90,14 +239,16 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Github",
+        "href": "https://github.com/openGeometry-io/OpenGeometry",
+        "icon": "github"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Need Support",
+      "href": "https://calendly.com/openGeometry/support?utm_source=docs&utm_medium=navbar&utm_package=openGeometry",
+      "icon": "chart-bar"
     }
   },
   "contextual": {
@@ -114,9 +265,10 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "github": "https://github.com/openGeometry-io/OpenGeometry",
+      "linkedin": "https://linkedin.com/company/openGeometry?utm_source=docs&utm_medium=footer&utm_package=openGeometry",
+      "discord": "https://discord.gg/openGeometry",
+      "x": "https://x.com/openGeometry"
     }
   }
 }
