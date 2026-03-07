@@ -1,35 +1,55 @@
-![OpenGeometry Version](https://img.shields.io/github/package-json/v/opengeometry-io/opengeometry?style=for-the-badge&color=4460FF)
+# Mintlify Starter Kit
 
-## 🚧 Under Heavy Development 🚧  
+Use the starter kit to get your docs deployed and ready to customize.
 
-**This project is currently a work in progress!**  
-Expect frequent updates, breaking changes, and exciting new features. 
+Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
 
-# OpenGeometry
-CAD Kernel for Web with OpenGeometry.
+- Guide pages
+- Navigation
+- Customizations
+- API reference pages
+- Use of popular components
 
-Documentation is available at [OpenGeometry Documentation](https://docs.opengeometry.io)
+**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
 
-#### Basic Example
-- A basic example is available at [Quick Start](https://github.com/OpenGeometry-io/quickstart-js)
+## AI-assisted writing
 
-#### Advanced and Additional Examples
-- Extensive Examples(Source Code) have a separate repo - https://github.com/OpenGeometry-io/OpenGeometry-examples
-- The live demo is available at [Kernel Examples](https://demos.opengeometry.io/src/kernel/index.html)
+Set up your AI coding tool to work with Mintlify:
 
-#### Feature List
-- Triangulation
-- Shapes - Rectangles, Circles, Polygons
-- Extrusion
-- Offset
-- Boolean Operations (In Progress)
+```bash
+npx skills add https://mintlify.com/docs
+```
 
-## AI Agent Docs Policy
+This command installs Mintlify's documentation skill for your configured AI tools like Claude Code, Cursor, Windsurf, and others. The skill includes component reference, writing standards, and workflow guidance.
 
-- Repository-level AI agent instructions are in [AGENTS.md](./AGENTS.md).
-- All AI-generated documentation must live under [`AI-DOCs/`](./AI-DOCs/).
-- AI-generated docs should not be added under app/code folders unless explicitly requested.
+See the [AI tools guides](/ai-tools) for tool-specific setup.
 
-----
+## Development
 
-> It is my land. Who would I be if I did not try to make it better? - A Knight.
+Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
+
+```
+npm i -g mint
+```
+
+Run the following command at the root of your documentation, where your `docs.json` is located:
+
+```
+mint dev
+```
+
+View your local preview at `http://localhost:3000`.
+
+## Publishing changes
+
+Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+
+## Need help?
+
+### Troubleshooting
+
+- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
+- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+
+### Resources
+- [Mintlify documentation](https://mintlify.com/docs)
