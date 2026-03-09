@@ -3,9 +3,9 @@
   "theme": "almond",
   "name": "auto-docs",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#4460FF",
+    "light": "#4460FF",
+    "dark": "#4460FF"
   },
   "favicon": "/favicon.svg",
   "metadata": {
@@ -233,8 +233,8 @@
     ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/logoDark.png",
+    "dark": "/logo/logoLight.png"
   },
   "navbar": {
     "links": [
