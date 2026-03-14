@@ -1,13 +1,21 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "almond",
-  "name": "auto-docs",
+  "name": "OpenGeometry Docs",
   "colors": {
     "primary": "#4460FF",
     "light": "#4460FF",
     "dark": "#4460FF"
   },
   "favicon": "/favicon.svg",
+  "description": "Documentation for OpenGeometry — a high-performance open-source geometry kernel for 3D modeling, B-Rep operations, and CAD applications.",
+  "seo": {
+    "indexing": "navigable",
+    "metatags": {
+      "og:site_name": "OpenGeometry Docs",
+      "twitter:card": "summary_large_image"
+    }
+  },
   "metadata": {
     "timestamp": true
   },
