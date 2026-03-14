@@ -50,19 +50,12 @@
               {
                 "group": "Core Concepts",
                 "pages": [
-                  "concepts/architecture",
-                  "concepts/primitives-and-shapes",
-                  "concepts/operations",
-                  "concepts/booleans",
-                  "concepts/exports",
-                  "concepts/brep"
-                ]
-              },
-              {
-                "group": "Integration",
-                "pages": [
-                  "OpenGeometry/integration/threejs",
-                  "OpenGeometry/integration/examples"
+                  "OpenGeometry/concepts/architecture",
+                  "OpenGeometry/concepts/primitives-and-shapes",
+                  "OpenGeometry/concepts/operations",
+                  "OpenGeometry/concepts/booleans",
+                  "OpenGeometry/concepts/exports",
+                  "OpenGeometry/concepts/brep"
                 ]
               }
             ]
@@ -98,15 +91,17 @@
                   "OpenGeometry/api/operations/extrude",
                   "OpenGeometry/api/operations/offset",
                   "OpenGeometry/api/operations/sweep",
-                  "OpenGeometry/api/operations/triangulate"
+                  "OpenGeometry/api/operations/triangulate",
+                  "OpenGeometry/api/operations/boolean-operations"
                 ]
               },
               {
-                "group": "Scene & Export",
+                "group": "Export (Experimental)",
                 "pages": [
-                  "OpenGeometry/api/scene/scene-management",
-                  "OpenGeometry/api/export/projection",
-                  "OpenGeometry/api/export/pdf"
+                  "OpenGeometry/api/export/stl",
+                  "OpenGeometry/api/export/ifc",
+                  "OpenGeometry/api/export/pdf",
+                  "OpenGeometry/api/export/step"
                 ]
               }
             ]

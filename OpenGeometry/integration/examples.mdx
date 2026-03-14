@@ -11,7 +11,7 @@ All source code examples are available at:
 
 **[OpenGeometry-Examples](https://github.com/OpenGeometry-io/OpenGeometry-examples)**
 
-Live interactive demos: **[demos.opengeometry.io](https://demos.opengeometry.io/src/kernel/index.html)**
+Live interactive demos: **[demos.opengeometry.io](https://demos.opengeometry.io/)**
 
 ## Quick Start
 
@@ -30,7 +30,7 @@ Simple 3D shapes with interactive controls.
 Interactive polygon with side count and radius controls:
 
 ```typescript
-import { Polygon, Vector3 } from '@og-three';
+import { Polygon, Vector3 } from 'opengeometry';
 import { bootstrapExample, mountControls } from '../shared/runtime';
 
 function buildPolygonVertices(sides: number, radius: number): Vector3[] {
@@ -80,7 +80,7 @@ bootstrapExample({
 Interactive box with width, height, and depth controls:
 
 ```typescript
-import { Cuboid, Vector3 } from '@og-three';
+import { Cuboid, Vector3 } from 'opengeometry';
 import { bootstrapExample, mountControls, replaceSceneObject } from '../shared/runtime';
 
 bootstrapExample({
@@ -135,7 +135,7 @@ Sphere with tessellation quality controls.
 Sweep a 2D profile along a 3D path:
 
 ```typescript
-import { Sweep, Vector3 } from '@og-three';
+import { Sweep, Vector3 } from 'opengeometry';
 import { bootstrapExample, mountControls, replaceSceneObject } from '../shared/runtime';
 
 function buildPath(height: number, spread: number): Vector3[] {
@@ -220,7 +220,7 @@ The examples use a shared runtime that sets up Three.js and OpenGeometry:
 ```typescript
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { OpenGeometry } from "@og-three";
+import { OpenGeometry } from "opengeometry";
 
 export async function bootstrapExample(config: BootstrapConfig) {
   // Create Three.js scene

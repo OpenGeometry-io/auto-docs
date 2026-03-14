@@ -9,37 +9,26 @@ OpenGeometry exposes two main modeling layers:
 - **3D shapes** for solids and surfaces
 
 If you are new, start by skimming what exists, then jump into the API pages.
-
-## Before you start
-
-Initialize OpenGeometry once before you construct primitives or shapes:
-
-```ts
-import { OpenGeometry } from "opengeometry";
-
-await OpenGeometry.create({ wasmURL: "/opengeometry_bg.wasm" });
-```
-
-See [OpenGeometry runtime](/api/core/opengeometry) for setup details.
+You can check out [Quickstart](/OpenGeometry/quickstart) for a step-by-step introduction to setup and creating your first shapes.
 
 ## 2D primitives
 
 Use primitives to draw, offset, and build profiles for shapes and operations.
 
 <CardGroup cols={2}>
-  <Card title="Line" icon="minus" href="/api/primitives/line">
+  <Card title="Line" icon="minus" href="/OpenGeometry/api/primitives/line">
     A single segment between two points.
   </Card>
-  <Card title="Polyline" icon="chart-line" href="/api/primitives/polyline">
+  <Card title="Polyline" icon="chart-line" href="/OpenGeometry/api/primitives/polyline">
     A chain of connected segments.
   </Card>
-  <Card title="Arc" icon="circle-notch" href="/api/primitives/arc">
+  <Card title="Arc" icon="circle-notch" href="/OpenGeometry/api/primitives/arc">
     A circular arc (or full circle).
   </Card>
-  <Card title="Curve" icon="wave-sine" href="/api/primitives/curve">
+  <Card title="Curve" icon="wave-sine" href="/OpenGeometry/api/primitives/curve">
     A control-point driven curve.
   </Card>
-  <Card title="Rectangle" icon="square" href="/api/primitives/rectangle">
+  <Card title="Rectangle" icon="square" href="/OpenGeometry/api/primitives/rectangle">
     A rectangular profile (useful for quick tests).
   </Card>
 </CardGroup>
@@ -50,37 +39,32 @@ Shapes are kernel-backed wrappers that extend `THREE.Mesh`, so you can add them 
 Three.js scene.
 
 <CardGroup cols={2}>
-  <Card title="Polygon" icon="draw-polygon" href="/api/shapes/polygon">
+  <Card title="Polygon" icon="draw-polygon" href="/OpenGeometry/api/shapes/polygon">
     A planar polygon (supports holes) with outline support.
   </Card>
-  <Card title="Cuboid" icon="cube" href="/api/shapes/cuboid">
+  <Card title="Cuboid" icon="cube" href="/OpenGeometry/api/shapes/cuboid">
     A box primitive (good baseline for booleans and exports).
   </Card>
-  <Card title="Cylinder" icon="cylinder" href="/api/shapes/cylinder">
+  <Card title="Cylinder" icon="circle-quarter-stroke" href="/OpenGeometry/api/shapes/cylinder">
     A cylinder with configurable segments and angle.
   </Card>
-  <Card title="Sphere" icon="circle" href="/api/shapes/sphere">
+  <Card title="Sphere" icon="circle" href="/OpenGeometry/api/shapes/sphere">
     A tessellated sphere with segment controls.
   </Card>
-  <Card title="Wedge" icon="triangle" href="/api/shapes/wedge">
+  <Card title="Wedge" icon="triangle" href="/OpenGeometry/api/shapes/wedge">
     A wedge / prism shape.
   </Card>
-  <Card title="Sweep" icon="route" href="/api/shapes/sweep">
+  <Card title="Sweep" icon="route" href="/OpenGeometry/api/shapes/sweep">
     Sweep a profile along a path.
   </Card>
-  <Card title="Opening" icon="door-open" href="/api/shapes/opening">
+  <Card title="Opening" icon="door-open" href="/OpenGeometry/api/shapes/opening">
     A boolean-cutting volume workflow for architectural openings.
   </Card>
 </CardGroup>
 
 ## Next steps
-
-- Learn about kernel data structures in [BRep](/concepts/brep).
-- See boolean workflows in [Booleans](/concepts/booleans) and [Boolean operations API](/api/operations/boolean-operations).
-- Browse the hosted demos at [demo.opengeometry.io](https://demo.opengeometry.io/).
-
 <CardGroup cols={2}>
-  <Card title="Boundary Representation" icon="cube" href="/concepts/brep">
+  <Card title="Boundary Representation" icon="cube" href="/OpenGeometry/concepts/brep">
     Understand how BREP works and how to build complex geometry
   </Card>
   <Card

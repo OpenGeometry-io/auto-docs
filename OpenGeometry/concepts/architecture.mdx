@@ -10,19 +10,20 @@ OpenGeometry is built with a layered architecture designed to bring high-perform
 The architecture consists of three primary layers:
 
 ```mermaid
-graph TD
-    C["🦀 Rust Core (opengeometry)\nGraphics Kernel"]
+graph TB
+    subgraph rust ["🦀 Rust Core (opengeometry) — Graphics Kernel"]
+        direction LR
+        D["Primitives"]
+        E["Operations"]
+        F["BREP"]
+        G["Export"]
+    end
 
-    C --- D["Primitives"]
-    C --- E["Operations"]
-    C --- F["BREP"]
-    C --- G["Export"]
-
-    C -->|Compiled to WASM| B["WebAssembly Module\n(opengeometry.wasm)"]
+    rust -->|Compiled to WASM| B["WebAssembly Module\n(opengeometry.wasm)"]
     B -->|WASM bindings| A["TypeScript / Three.js Layer\n(Browser / Node.js)"]
     A -->|Renders to| V["App View\n(Interactive 3D Canvas)"]
 
-    style C fill:#E8590C,stroke:#C73E00,color:#fff,stroke-width:3px
+    style rust fill:#E8590C,stroke:#C73E00,color:#fff,stroke-width:3px
     style D fill:#FF922B,stroke:#E8590C,color:#fff
     style E fill:#FF922B,stroke:#E8590C,color:#fff
     style F fill:#FF922B,stroke:#E8590C,color:#fff
@@ -190,16 +191,16 @@ Secondary target for server-side use:
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="Primitives and Shapes" icon="draw" href="/concepts/primitives-and-shapes">
+  <Card title="Primitives and Shapes" icon="shapes" href="OpenGeometry/concepts/primitives-and-shapes">
     Explore the available 2D and 3D primitives you can create
   </Card>
-  <Card title="CAD Operations" icon="cogs" href="/concepts/operations">
+  <Card title="CAD Operations" icon="dice-d8" href="OpenGeometry/concepts/operations">
       Learn about extrusion, offsetting, sweeping, and more
   </Card>
-  <Card title="Boundary Representation" icon="cube" href="/concepts/brep">
+  <Card title="Boundary Representation" icon="cube" href="OpenGeometry/concepts/brep">
     Understand how BREP works and how to build complex geometry
   </Card>
-  <Card title="Booleans" icon="union" href="/concepts/booleans">
+  <Card title="Booleans" icon="object-union" href="OpenGeometry/concepts/booleans">
     See how to perform boolean operations with OpenGeometry
   </Card>
 </CardGroup>

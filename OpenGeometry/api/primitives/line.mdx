@@ -19,7 +19,7 @@ The Line primitive represents a straight line segment in 3D space, defined by a 
 <Tabs>
   <Tab title="Rust">
     ```rust
-    let line = OGLine::new(id: String);
+    let line = OGLine::new("line-1".to_string());
     ```
   </Tab>
   <Tab title="TypeScript">
@@ -214,7 +214,7 @@ Returns the complete BREP representation as JSON.
   </Tab>
   <Tab title="TypeScript">
     ```typescript
-    import { Line, Vector3 } from 'opengeometry-three';
+    import { Line, Vector3 } from "opengeometry";
 
     const line = new Line({
       start: new Vector3(0, 0, 0),
@@ -281,3 +281,9 @@ Returns the complete BREP representation as JSON.
     ```
   </Tab>
 </Tabs>
+
+### Live Demo
+
+<Card title="Line Demo" icon="play" href="https://demos.opengeometry.io/primitives/line.html">
+  Try the Line primitive in the browser
+</Card>
