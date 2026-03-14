@@ -92,6 +92,17 @@ scene.add(directionalLight);
 
 </Step>
 
+<Step title="Initialize OpenGeometry">
+
+Initialize the OpenGeometry before creating shapes:
+
+```typescript
+// Initialize OpenGeometry
+await OpenGeometry.create();
+```
+
+</Step>
+
 <Step title="Create a 3D shape">
 
 Now create a cuboid and add it to the scene:
@@ -188,7 +199,7 @@ directionalLight.position.set(5, 8, 3);
 scene.add(directionalLight);
 
 // Initialize OpenGeometry
-await OpenGeometry.create({});
+await OpenGeometry.create();
 
 // Create a cuboid
 const cuboid = new Cuboid({
@@ -306,7 +317,7 @@ scene.add(polyline);
   <Card
     title="Live Examples"
     icon="sparkles"
-    href="https://demos.opengeometry.io/src/kernel/index.html"
+    href="https://demos.opengeometry.io/"
   >
     See interactive examples showcasing all features
   </Card>

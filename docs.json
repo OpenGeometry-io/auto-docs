@@ -50,9 +50,12 @@
               {
                 "group": "Core Concepts",
                 "pages": [
-                  "OpenGeometry/concepts/architecture",
-                  "OpenGeometry/concepts/brep",
-                  "OpenGeometry/concepts/scene-graph"
+                  "concepts/architecture",
+                  "concepts/primitives-and-shapes",
+                  "concepts/operations",
+                  "concepts/booleans",
+                  "concepts/exports",
+                  "concepts/brep"
                 ]
               },
               {

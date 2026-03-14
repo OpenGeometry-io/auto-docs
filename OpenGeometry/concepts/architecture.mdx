@@ -11,21 +11,25 @@ The architecture consists of three primary layers:
 
 ```mermaid
 graph TD
-    A["TypeScript / Three.js Application\n(Browser / Node.js)"] -->|WASM bindings| B["WebAssembly Module\n(opengeometry.wasm)"]
-    B -->|Core algorithms| C["Rust Core (opengeometry)"]
+    C["🦀 Rust Core (opengeometry)\nGraphics Kernel"]
 
     C --- D["Primitives"]
     C --- E["Operations"]
     C --- F["BREP"]
     C --- G["Export"]
 
-    style A fill:#4A90D9,stroke:#2E6BA6,color:#fff
+    C -->|Compiled to WASM| B["WebAssembly Module\n(opengeometry.wasm)"]
+    B -->|WASM bindings| A["TypeScript / Three.js Layer\n(Browser / Node.js)"]
+    A -->|Renders to| V["App View\n(Interactive 3D Canvas)"]
+
+    style C fill:#E8590C,stroke:#C73E00,color:#fff,stroke-width:3px
+    style D fill:#FF922B,stroke:#E8590C,color:#fff
+    style E fill:#FF922B,stroke:#E8590C,color:#fff
+    style F fill:#FF922B,stroke:#E8590C,color:#fff
+    style G fill:#FF922B,stroke:#E8590C,color:#fff
     style B fill:#7B68EE,stroke:#5A4FCF,color:#fff
-    style C fill:#2ECC71,stroke:#27AE60,color:#fff
-    style D fill:#2ECC71,stroke:#27AE60,color:#fff
-    style E fill:#2ECC71,stroke:#27AE60,color:#fff
-    style F fill:#2ECC71,stroke:#27AE60,color:#fff
-    style G fill:#2ECC71,stroke:#27AE60,color:#fff
+    style A fill:#4A90D9,stroke:#2E6BA6,color:#fff
+    style V fill:#2ECC71,stroke:#27AE60,color:#fff
 ```
 
 ### Data Flow
