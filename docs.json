@@ -11,6 +11,11 @@
   "metadata": {
     "timestamp": true
   },
+  "integrations": {
+    "mixpanel": {
+      "projectToken": "5877f3196c42248c8eb338b8845d962c"
+    }
+  },
   "navigation": {
     "products": [
       {
