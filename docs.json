@@ -25,7 +25,7 @@
             },
             {
               "anchor": "Discord",
-              "href": "https://discord.gg/openGeometry",
+              "href": "https://discord.gg/cZY2Vm6E",
               "icon": "discord"
             },
             {
@@ -115,7 +115,7 @@
           "anchors": [
             {
               "anchor": "Discord",
-              "href": "https://discord.gg/openGeometry",
+              "href": "https://discord.gg/cZY2Vm6E",
               "icon": "discord"
             },
             {
@@ -156,7 +156,7 @@
     "primary": {
       "type": "button",
       "label": "Need Support",
-      "href": "https://calendly.com/openGeometry/support?utm_source=docs&utm_medium=navbar&utm_package=openGeometry",
+      "href": "https://calendly.com/manevishwajeet1/meeting",
       "icon": "pencil"
     }
   },
@@ -176,7 +176,7 @@
     "socials": {
       "github": "https://github.com/openGeometry-io/OpenGeometry",
       "linkedin": "https://linkedin.com/company/openGeometry?utm_source=docs&utm_medium=footer&utm_package=openGeometry",
-      "discord": "https://discord.gg/openGeometry",
+      "discord": "https://discord.gg/cZY2Vm6E",
       "x": "https://x.com/openGeometry"
     }
   }
