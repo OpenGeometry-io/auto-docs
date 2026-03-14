@@ -155,7 +155,7 @@ wedge.discardGeometry(): void
 ### Basic Wedge
 
 ```typescript
-import { Wedge, Vector3 } from 'opengeometry-three';
+import { Wedge, Vector3 } from 'opengeometry';
 
 const wedge = new Wedge({
   center: new Vector3(0, 0, 0),
@@ -172,7 +172,7 @@ scene.add(wedge);
 ### Ramp or Slope
 
 ```typescript
-import { Wedge, Vector3 } from 'opengeometry-three';
+import { Wedge, Vector3 } from 'opengeometry';
 
 // Create a ramp
 const ramp = new Wedge({
@@ -189,7 +189,7 @@ ramp.outline = true;
 ### Wedge with Outline
 
 ```typescript
-import { Wedge, Vector3 } from 'opengeometry-three';
+import { Wedge, Vector3 } from 'opengeometry';
 
 const wedge = new Wedge({
   center: new Vector3(0, 0, 0),
@@ -206,7 +206,7 @@ wedge.outline = true;
 ### Roof Section
 
 ```typescript
-import { Wedge, Vector3 } from 'opengeometry-three';
+import { Wedge, Vector3 } from 'opengeometry';
 
 // Triangular roof element
 const roofSection = new Wedge({
@@ -221,7 +221,7 @@ const roofSection = new Wedge({
 ### Array of Wedges
 
 ```typescript
-import { Wedge, Vector3 } from 'opengeometry-three';
+import { Wedge, Vector3 } from 'opengeometry';
 
 // Create a stepped pattern
 for (let i = 0; i < 5; i++) {
@@ -287,7 +287,7 @@ self.brep.faces.push(Face::new(4, vec![1, 2, 5, 4]));  // Right sloped side (qua
 
 Wedges use MeshStandardMaterial with transparency:
 
-**Source:** `/workspace/source/main/opengeometry-three/src/shapes/wedge.ts:82-86`
+**Source:** `/workspace/source/main/opengeometry/src/shapes/wedge.ts:82-86`
 
 ```typescript
 const material = new THREE.MeshStandardMaterial({
@@ -334,8 +334,21 @@ The volume of a wedge is:
 V = (width × height × depth) / 2
 ```
 
+## Live Demo
+<Card title="Wedge Demo" icon="play" href="https://demos.opengeometry.io/shapes/wedge.html">
+  Try the Wedge shape in the browser
+</Card>
+
 ## See Also
 
-- [Cuboid](/api/shapes/cuboid) - For rectangular boxes
-- [Polygon](/api/shapes/polygon) - For 2D triangular shapes
-- [Sweep](/api/shapes/sweep) - For custom extrusions
+<CardGroup cols={2}>
+  <Card title="Cuboid" icon="cube" href="/OpenGeometry/api/shapes/cuboid">
+    Rectangular boxes
+  </Card>
+  <Card title="Polygon" icon="draw-polygon" href="/OpenGeometry/api/shapes/polygon">
+    2D triangular shapes
+  </Card>
+  <Card title="Sweep" icon="bezier-curve" href="/OpenGeometry/api/shapes/sweep">
+    Custom extrusions
+  </Card>
+</CardGroup>

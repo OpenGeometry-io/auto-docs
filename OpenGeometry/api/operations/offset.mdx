@@ -237,10 +237,6 @@ Closed Path with Beveled Corner:
 
 ## Implementation Details
 
-### Source Location
-
-`~/workspace/source/main/opengeometry/src/operations/offset.rs:87`
-
 ### Precision
 
 - Uses `EPSILON = 1.0e-9` for geometric comparisons
@@ -262,5 +258,17 @@ Closed Path with Beveled Corner:
 
 ## See Also
 
-- [Sweep](/api/operations/sweep) - Offset a profile along a path
-- [Extrude](/api/operations/extrude) - Create 3D geometry from 2D shapes
+<CardGroup cols={2}>
+  <Card title="Sweep" icon="route" href="/OpenGeometry/api/operations/sweep">
+    Offset a profile along a path
+  </Card>
+  <Card title="Extrude" icon="arrows-up-down" href="/OpenGeometry/api/operations/extrude">
+    Create 3D geometry from 2D shapes
+  </Card>
+</CardGroup>
+
+### Live Demo
+
+<Card title="Offset Demo" icon="play" href="https://demos.opengeometry.io/operations/offset.html">
+  Try the Offset operation in the browser
+</Card>

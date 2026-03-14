@@ -85,7 +85,7 @@ const polygon = new Polygon({
 scene.add(polygon);
 ```
 
-**Source:** ~/workspace/source/main/opengeometry-three/src/shapes/polygon.ts:11
+**Source:** ~/workspace/source/main/opengeometry/src/shapes/polygon.ts:11
 
 #### Adding Holes
 
@@ -117,7 +117,7 @@ cuboid.outline = true;
 scene.add(cuboid);
 ```
 
-**Source:** ~/workspace/source/main/opengeometry-three/src/shapes/cuboid.ts:14
+**Source:** ~/workspace/source/main/opengeometry/src/shapes/cuboid.ts:14
 
 ### Cylinder
 
@@ -138,7 +138,7 @@ const cylinder = new Cylinder({
 scene.add(cylinder);
 ```
 
-**Source:** ~/workspace/source/main/opengeometry-three/src/shapes/cylinder.ts:15
+**Source:** ~/workspace/source/main/opengeometry/src/shapes/cylinder.ts:15
 
 ### Sphere
 
@@ -158,7 +158,7 @@ const sphere = new Sphere({
 scene.add(sphere);
 ```
 
-**Source:** ~/workspace/source/main/opengeometry-three/src/shapes/sphere.ts:27
+**Source:** ~/workspace/source/main/opengeometry/src/shapes/sphere.ts:27
 
 ### Sweep
 
@@ -189,7 +189,7 @@ const sweep = new Sweep({
 scene.add(sweep);
 ```
 
-**Source:** ~/workspace/source/main/opengeometry-three/src/shapes/sweep.ts:28
+**Source:** ~/workspace/source/main/opengeometry/src/shapes/sweep.ts:28
 
 ## Common Patterns
 
@@ -216,7 +216,7 @@ cuboid.setConfig({
 });
 ```
 
-**Source:** ~/workspace/source/main/opengeometry-three/src/shapes/cuboid.ts:60
+**Source:** ~/workspace/source/main/opengeometry/src/shapes/cuboid.ts:60
 
 ### Color Management
 
@@ -226,7 +226,7 @@ All shapes support dynamic color changes:
 polygon.color = 0xff0000;  // Change to red
 ```
 
-**Source:** ~/workspace/source/main/opengeometry-three/src/shapes/polygon.ts:19
+**Source:** ~/workspace/source/main/opengeometry/src/shapes/polygon.ts:19
 
 ### Outline Rendering
 
@@ -238,7 +238,7 @@ polygon.outline = false; // Disable outline
 polygon.outlineColor = 0x000000; // Set outline color
 ```
 
-**Source:** ~/workspace/source/main/opengeometry-three/src/shapes/polygon.ts:345
+**Source:** ~/workspace/source/main/opengeometry/src/shapes/polygon.ts:345
 
 ### BREP Data Access
 
@@ -249,7 +249,7 @@ const brepData = cuboid.getBrepData();
 console.log(brepData); // { vertices: [...], edges: [...], faces: [...] }
 ```
 
-**Source:** ~/workspace/source/main/opengeometry-three/src/shapes/cuboid.ts:118
+**Source:** ~/workspace/source/main/opengeometry/src/shapes/cuboid.ts:118
 
 ### Geometry Management
 
@@ -263,7 +263,7 @@ polygon.setConfig(newOptions);
 polygon.discardGeometry();
 ```
 
-**Source:** ~/workspace/source/main/opengeometry-three/src/shapes/polygon.ts:139
+**Source:** ~/workspace/source/main/opengeometry/src/shapes/polygon.ts:139
 
 ## Complete Example
 
@@ -345,7 +345,7 @@ When enabled:
 - Faces have random colors for triangle visualization
 - Normals are rendered for debugging
 
-**Source:** ~/workspace/source/main/opengeometry-three/index.ts:34
+**Source:** ~/workspace/source/main/opengeometry/index.ts:34
 
 ## Next Steps
 

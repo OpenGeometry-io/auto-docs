@@ -170,7 +170,7 @@ cylinder.discardGeometry(): void
 ### Basic Cylinder
 
 ```typescript
-import { Cylinder, Vector3 } from 'opengeometry-three';
+import { Cylinder, Vector3 } from 'opengeometry';
 
 const cylinder = new Cylinder({
   center: new Vector3(0, 0, 0),
@@ -188,7 +188,7 @@ scene.add(cylinder);
 ### Half Cylinder (Partial Angle)
 
 ```typescript
-import { Cylinder, Vector3 } from 'opengeometry-three';
+import { Cylinder, Vector3 } from 'opengeometry';
 
 const halfCylinder = new Cylinder({
   center: new Vector3(0, 0, 0),
@@ -205,7 +205,7 @@ halfCylinder.outline = true;
 ### High-Resolution Cylinder
 
 ```typescript
-import { Cylinder, Vector3 } from 'opengeometry-three';
+import { Cylinder, Vector3 } from 'opengeometry';
 
 // Smooth cylinder with many segments
 const smoothCylinder = new Cylinder({
@@ -221,7 +221,7 @@ const smoothCylinder = new Cylinder({
 ### Updating Cylinder Dynamically
 
 ```typescript
-import { Cylinder, Vector3 } from 'opengeometry-three';
+import { Cylinder, Vector3 } from 'opengeometry';
 
 const cylinder = new Cylinder({
   center: new Vector3(0, 0, 0),
@@ -266,7 +266,7 @@ for _ in 0..segment_count {
 
 Cylinders use MeshStandardMaterial with transparency for better visual integration:
 
-**Source:** `/workspace/source/main/opengeometry-three/src/shapes/cylinder.ts:98-102`
+**Source:** `/workspace/source/main/opengeometry/src/shapes/cylinder.ts:98-102`
 
 ```typescript
 const material = new THREE.MeshStandardMaterial({
@@ -296,8 +296,21 @@ When `angle < 2π`, an additional center vertex is added to the base circle to p
   **Outline Performance:** Enabling outlines adds line geometry. For scenes with many cylinders, consider toggling outlines based on selection or zoom level.
 </Info>
 
+## Live Demo
+<Card title="Cylinder Demo" icon="play" href="https://demos.opengeometry.io/shapes/cylinder.html">
+  Try the Cylinder shape in the browser
+</Card>
+
 ## See Also
 
-- [Sphere](/api/shapes/sphere) - For spherical shapes
-- [Cuboid](/api/shapes/cuboid) - For rectangular boxes
-- [Sweep](/api/shapes/sweep) - For custom profile extrusions
+<CardGroup cols={2}>
+  <Card title="Sweep" icon="bezier-curve" href="/OpenGeometry/api/shapes/sweep">
+    Custom profile extrusions
+  </Card>
+  <Card title="Sphere" icon="globe" href="/OpenGeometry/api/shapes/sphere">
+    Spherical shapes
+  </Card>
+  <Card title="Cuboid" icon="cube" href="/OpenGeometry/api/shapes/cuboid">
+    Rectangular boxes
+  </Card>
+</CardGroup>

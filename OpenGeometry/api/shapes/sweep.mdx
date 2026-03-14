@@ -165,7 +165,7 @@ sweep.discardGeometry(): void
 ### Simple Pipe
 
 ```typescript
-import { Sweep, Vector3 } from 'opengeometry-three';
+import { Sweep, Vector3 } from 'opengeometry';
 
 // Straight vertical pipe with square cross-section
 const pipe = new Sweep({
@@ -190,7 +190,7 @@ scene.add(pipe);
 ### Curved Tube
 
 ```typescript
-import { Sweep, Vector3 } from 'opengeometry-three';
+import { Sweep, Vector3 } from 'opengeometry';
 
 // Create a curved path
 const curvedPath = [];
@@ -229,7 +229,7 @@ tube.outline = true;
 ### Handrail
 
 ```typescript
-import { Sweep, Vector3 } from 'opengeometry-three';
+import { Sweep, Vector3 } from 'opengeometry';
 
 // Staircase handrail path
 const handrailPath = [
@@ -263,7 +263,7 @@ const handrail = new Sweep({
 ### Open-Ended Sweep
 
 ```typescript
-import { Sweep, Vector3 } from 'opengeometry-three';
+import { Sweep, Vector3 } from 'opengeometry';
 
 // Sweep without end caps (open tube)
 const openTube = new Sweep({
@@ -287,7 +287,7 @@ const openTube = new Sweep({
 ### Architectural Molding
 
 ```typescript
-import { Sweep, Vector3 } from 'opengeometry-three';
+import { Sweep, Vector3 } from 'opengeometry';
 
 // Complex profile for decorative molding
 const moldingProfile = [
@@ -336,7 +336,7 @@ self.brep = sweep_profile_along_path(&self.path_points, &self.profile_points, op
 
 Sweeps use MeshStandardMaterial with transparency:
 
-**Source:** `/workspace/source/main/opengeometry-three/src/shapes/sweep.ts:123-127`
+**Source:** `/workspace/source/main/opengeometry/src/shapes/sweep.ts:123-127`
 
 ```typescript
 const material = new THREE.MeshStandardMaterial({
@@ -350,7 +350,7 @@ const material = new THREE.MeshStandardMaterial({
 
 The sweep validates path and profile requirements:
 
-**Source:** `/workspace/source/main/opengeometry-three/src/shapes/sweep.ts:75-87`
+**Source:** `/workspace/source/main/opengeometry/src/shapes/sweep.ts:75-87`
 
 ```typescript
 validateOptions() {
@@ -372,7 +372,7 @@ validateOptions() {
 
 When `capStart` or `capEnd` is true, the sweep operation adds triangulated faces at the ends:
 
-**Source:** `/workspace/source/main/opengeometry-three/src/shapes/sweep.ts:95-96`
+**Source:** `/workspace/source/main/opengeometry/src/shapes/sweep.ts:95-96`
 
 ## Best Practices
 
@@ -407,8 +407,21 @@ Total faces ≈ `(path_points - 1) × profile_points × 2 + cap_faces`
 3. **Disable Caps:** Set `capStart` and `capEnd` to `false` for open-ended shapes
 4. **Outline Toggle:** Only enable outlines when needed for debugging or emphasis
 
+## Live Demo
+<Card title="Sweep Demo" icon="play" href="https://demos.opengeometry.io/shapes/sweep.html">
+  Try the Sweep shape in the browser
+</Card>
+
 ## See Also
 
-- [Cylinder](/api/shapes/cylinder) - For simple straight extrusions
-- [Polygon](/api/shapes/polygon) - For creating custom 2D profiles
-- [Cuboid](/api/shapes/cuboid) - For rectangular extrusions
+<CardGroup cols={2}>
+  <Card title="Cylinder" icon="database" href="/OpenGeometry/api/shapes/cylinder">
+    Simple straight extrusions
+  </Card>
+  <Card title="Polygon" icon="draw-polygon" href="/OpenGeometry/api/shapes/polygon">
+    Custom 2D profiles
+  </Card>
+  <Card title="Cuboid" icon="cube" href="/OpenGeometry/api/shapes/cuboid">
+    Rectangular extrusions
+  </Card>
+</CardGroup>

@@ -10,7 +10,7 @@ OpenGeometry exposes kernel-backed boolean operations that work on B-Rep payload
 multiple operand formats (wrapper objects, raw B-Rep objects, or serialized JSON) and return a
 renderable `THREE.Mesh` result with access to the output B-Rep and a structured report.
 
-To learn how booleans work and what to expect from them, read [Booleans](/concepts/booleans).
+To learn how booleans work and what to expect from them, read [Booleans](/OpenGeometry/concepts/booleans).
 
 ## Initialization
 
@@ -19,7 +19,7 @@ Initialize the WASM module once before calling any boolean helpers:
 ```ts
 import { OpenGeometry } from "opengeometry";
 
-await OpenGeometry.create({ wasmURL: "/opengeometry_bg.wasm" });
+await OpenGeometry.create();
 ```
 
 ## API
@@ -174,7 +174,7 @@ scene.add(cutWall);
 import * as THREE from "three";
 import { OpenGeometry, Cuboid, Vector3, booleanUnion, booleanIntersection } from "opengeometry";
 
-await OpenGeometry.create({ wasmURL: "/opengeometry_bg.wasm" });
+await OpenGeometry.create();
 
 const scene = new THREE.Scene();
 
@@ -205,10 +205,11 @@ scene.add(union, intersection);
 
 ## Related
 
-- [Booleans](/concepts/booleans) for behavior, limitations, and tips
-- [Exports](/concepts/exports) for exporting boolean results to STL/STEP/IFC
+- [Booleans](/OpenGeometry/concepts/booleans) for behavior, limitations, and tips
+- [Exports](/OpenGeometry/concepts/exports) for exporting boolean results to STL/STEP/IFC
 
-## Live demo
+### Live Demo
 
-- [Boolean operations demo](https://demo.opengeometry.io/operations/boolean-operations.html)
-- [Polygon boolean operations demo](https://demo.opengeometry.io/operations/polygon-boolean-operations.html)
+<Card title="Boolean Operations Demo" icon="play" href="https://demos.opengeometry.io/operations/boolean-operations.html">
+  Try Boolean operations in the browser
+</Card>

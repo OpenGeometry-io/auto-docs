@@ -165,7 +165,7 @@ cuboid.discardGeometry(): void
 ### Basic Cuboid
 
 ```typescript
-import { Cuboid, Vector3 } from 'opengeometry-three';
+import { Cuboid, Vector3 } from 'opengeometry';
 
 const box = new Cuboid({
   center: new Vector3(0, 0, 0),
@@ -182,7 +182,7 @@ scene.add(box);
 ### Cuboid with Outline
 
 ```typescript
-import { Cuboid, Vector3 } from 'opengeometry-three';
+import { Cuboid, Vector3 } from 'opengeometry';
 
 const cuboid = new Cuboid({
   center: new Vector3(0, 2.5, 0),
@@ -199,7 +199,7 @@ cuboid.outline = true;
 ### Cube (Equal Dimensions)
 
 ```typescript
-import { Cuboid, Vector3 } from 'opengeometry-three';
+import { Cuboid, Vector3 } from 'opengeometry';
 
 const cube = new Cuboid({
   center: new Vector3(0, 0, 0),
@@ -213,7 +213,7 @@ const cube = new Cuboid({
 ### Dynamic Cuboid Scaling
 
 ```typescript
-import { Cuboid, Vector3 } from 'opengeometry-three';
+import { Cuboid, Vector3 } from 'opengeometry';
 
 const cuboid = new Cuboid({
   center: new Vector3(0, 0, 0),
@@ -244,7 +244,7 @@ animate();
 ### Building Block
 
 ```typescript
-import { Cuboid, Vector3 } from 'opengeometry-three';
+import { Cuboid, Vector3 } from 'opengeometry';
 
 // Create a wall segment
 const wallSegment = new Cuboid({
@@ -290,7 +290,7 @@ let extruded_brep = extrude_brep_face(bottom_face_brep, self.height);
 
 Cuboids use MeshStandardMaterial with transparency:
 
-**Source:** `/workspace/source/main/opengeometry-three/src/shapes/cuboid.ts:100-104`
+**Source:** `/workspace/source/main/opengeometry/src/shapes/cuboid.ts:100-104`
 
 ```typescript
 const material = new THREE.MeshStandardMaterial({
@@ -323,8 +323,21 @@ Cuboids have a well-defined B-Rep structure:
   **Memory Management:** Use `discardGeometry()` when removing cuboids from the scene to properly free GPU memory.
 </Info>
 
+## Live Demo
+<Card title="Cuboid Demo" icon="play" href="https://demos.opengeometry.io/shapes/cuboid.html">
+  Try the Cuboid shape in the browser
+</Card>
+
 ## See Also
 
-- [Wedge](/api/shapes/wedge) - For triangular prism shapes
-- [Cylinder](/api/shapes/cylinder) - For cylindrical shapes
-- [Polygon](/api/shapes/polygon) - For 2D base shapes
+<CardGroup cols={2}>
+  <Card title="Wedge" icon="triangle-exclamation" href="/OpenGeometry/api/shapes/wedge">
+    Triangular prism shapes
+  </Card>
+  <Card title="Cylinder" icon="database" href="/OpenGeometry/api/shapes/cylinder">
+    Cylindrical shapes
+  </Card>
+  <Card title="Polygon" icon="draw-polygon" href="/OpenGeometry/api/shapes/polygon">
+    2D base shapes
+  </Card>
+</CardGroup>

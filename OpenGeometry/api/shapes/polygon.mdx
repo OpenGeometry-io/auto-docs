@@ -170,7 +170,7 @@ polygon.dispose(): void
 ### Basic Rectangle
 
 ```typescript
-import { Polygon, Vector3 } from 'opengeometry-three';
+import { Polygon, Vector3 } from 'opengeometry';
 
 const rectangle = new Polygon({
   vertices: [
@@ -190,7 +190,7 @@ rectangle.outlineColor = 0x000000;
 ### Polygon with Hole
 
 ```typescript
-import { Polygon, Vector3 } from 'opengeometry-three';
+import { Polygon, Vector3 } from 'opengeometry';
 
 // Create outer polygon
 const polygon = new Polygon({
@@ -215,7 +215,7 @@ polygon.addHole([
 ### Complex Shape
 
 ```typescript
-import { Polygon, Vector3 } from 'opengeometry-three';
+import { Polygon, Vector3 } from 'opengeometry';
 
 // L-shaped polygon
 const lShape = new Polygon({
@@ -239,7 +239,7 @@ lShape.outline = true;
 
 The polygon is automatically triangulated using the `triangulate_polygon_with_holes` function from the Rust kernel. This ensures proper rendering of complex shapes with holes.
 
-**Source:** `/workspace/source/main/opengeometry-three/src/shapes/polygon.ts:155`
+**Source:** `/workspace/source/main/opengeometry/src/shapes/polygon.ts:155`
 
 ### Geometry Generation
 
@@ -252,13 +252,13 @@ const material = new THREE.MeshBasicMaterial({
 });
 ```
 
-**Source:** `/workspace/source/main/opengeometry-three/src/shapes/polygon.ts:176-182`
+**Source:** `/workspace/source/main/opengeometry/src/shapes/polygon.ts:176-182`
 
 ### Outline Rendering
 
 Outlines are rendered as THREE.LineSegments, positioned as a child of the polygon mesh to maintain transformation hierarchy.
 
-**Source:** `/workspace/source/main/opengeometry-three/src/shapes/polygon.ts:345-379`
+**Source:** `/workspace/source/main/opengeometry/src/shapes/polygon.ts:345-379`
 
 ## Best Practices
 
@@ -274,8 +274,21 @@ Outlines are rendered as THREE.LineSegments, positioned as a child of the polygo
   **Performance:** For polygons with many vertices or multiple holes, consider enabling outline rendering only when necessary, as it adds additional geometry.
 </Info>
 
+## Live Demo
+<Card title="Polygon Demo" icon="play" href="https://demos.opengeometry.io/shapes/polygon.html">
+  Try the Polygon shape in the browser
+</Card>
+
 ## See Also
 
-- [Cuboid](/api/shapes/cuboid) - For rectangular 3D boxes
-- [Cylinder](/api/shapes/cylinder) - For circular extrusions
-- [Sweep](/api/shapes/sweep) - For extruding profiles along paths
+<CardGroup cols={2}>
+  <Card title="Cuboid" icon="cube" href="/OpenGeometry/api/shapes/cuboid">
+    Rectangular 3D boxes
+  </Card>
+  <Card title="Cylinder" icon="database" href="/OpenGeometry/api/shapes/cylinder">
+    Circular extrusions
+  </Card>
+  <Card title="Sweep" icon="bezier-curve" href="/OpenGeometry/api/shapes/sweep">
+    Extrude profiles along paths
+  </Card>
+</CardGroup>
