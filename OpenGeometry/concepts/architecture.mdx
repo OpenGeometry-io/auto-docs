@@ -9,28 +9,23 @@ OpenGeometry is built with a layered architecture designed to bring high-perform
 
 The architecture consists of three primary layers:
 
-```
-┌─────────────────────────────────────────┐
-│   TypeScript/Three.js Application       │  ← User-facing API
-│   (Browser/Node.js)                     │
-└─────────────────┬───────────────────────┘
-                  │
-                  │ WASM bindings
-                  ↓
-┌─────────────────────────────────────────┐
-│   WebAssembly Module                    │  ← Compiled from Rust
-│   (opengeometry.wasm)                   │
-└─────────────────┬───────────────────────┘
-                  │
-                  │ Core algorithms
-                  ↓
-┌─────────────────────────────────────────┐
-│   Rust Core (opengeometry)              │  ← Graphics kernel
-│   • Primitives                          │
-│   • Operations                          │
-│   • BREP                                │
-│   • Export                              │
-└─────────────────────────────────────────┘
+```mermaid
+graph TD
+    A["TypeScript / Three.js Application\n(Browser / Node.js)"] -->|WASM bindings| B["WebAssembly Module\n(opengeometry.wasm)"]
+    B -->|Core algorithms| C["Rust Core (opengeometry)"]
+
+    C --- D["Primitives"]
+    C --- E["Operations"]
+    C --- F["BREP"]
+    C --- G["Export"]
+
+    style A fill:#4A90D9,stroke:#2E6BA6,color:#fff
+    style B fill:#7B68EE,stroke:#5A4FCF,color:#fff
+    style C fill:#2ECC71,stroke:#27AE60,color:#fff
+    style D fill:#2ECC71,stroke:#27AE60,color:#fff
+    style E fill:#2ECC71,stroke:#27AE60,color:#fff
+    style F fill:#2ECC71,stroke:#27AE60,color:#fff
+    style G fill:#2ECC71,stroke:#27AE60,color:#fff
 ```
 
 ### Data Flow
@@ -67,19 +62,30 @@ The Rust core is organized into focused modules as defined in `src/lib.rs`:
 - `triangulate` - Convert faces to triangular meshes
 - `windingsort` - Polygon winding order utilities
 
+**booleans**
+- Kernel-backed boolean operations (union, intersection, subtraction)
+
 **brep**
 Boundary representation data structures:
 - `vertex` - Point in 3D space
-- `edge` - Connection between two vertices
-- `face` - Planar or curved surface
-- `halfedge` - Half-edge data structure (planned)
+- `halfedge` - Directed half-edge topology (twin/next/prev)
+- `edge` - Undirected edge with primary/twin half-edge references
+- `loop` - Face boundary loops (outer and inner holes)
+- `face` - Face normal and loop references
+- `wire` - Polyline topology (open or closed)
+- `shell` - Face groups (open or closed)
+- `builder` - Safe B-Rep construction helper that validates topology
+- `error` - B-Rep error types used during building and validation
 
 **scenegraph**
 Scene management system for organizing multiple geometric entities.
 
 **export**
-- `projection` - 2D projection with hidden line removal
-- `pdf` - PDF export (native only, not WASM)
+- `stl` - STL export (bytes, experimental)
+- `ifc` - IFC export (text, experimental)
+- `pdf` - PDF export (native only, experimental)
+- `step` - STEP export (text, experimental)
+- `projection` - 2D projection with hidden line removal (experimental)
 
 **geometry**
 Base geometry utilities and triangle operations.
@@ -180,10 +186,16 @@ Secondary target for server-side use:
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="BREP Structure" icon="cube" href="/concepts/brep">
-    Learn about the boundary representation data model
+  <Card title="Primitives and Shapes" icon="draw" href="/concepts/primitives-and-shapes">
+    Explore the available 2D and 3D primitives you can create
   </Card>
-  <Card title="Scene Graph" icon="sitemap" href="/concepts/scene-graph">
-    Understand multi-entity scene management
+  <Card title="CAD Operations" icon="cogs" href="/concepts/operations">
+      Learn about extrusion, offsetting, sweeping, and more
+  </Card>
+  <Card title="Boundary Representation" icon="cube" href="/concepts/brep">
+    Understand how BREP works and how to build complex geometry
+  </Card>
+  <Card title="Booleans" icon="union" href="/concepts/booleans">
+    See how to perform boolean operations with OpenGeometry
   </Card>
 </CardGroup>

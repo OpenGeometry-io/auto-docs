@@ -30,15 +30,15 @@ OpenGeometry requires Three.js for 3D rendering. Install it as a peer dependency
 <CodeGroup>
 
 ```bash npm
-npm install three@^0.168.0
+npm install three
 ```
 
 ```bash yarn
-yarn add three@^0.168.0
+yarn add three@
 ```
 
 ```bash pnpm
-pnpm add three@^0.168.0
+pnpm add three
 ```
 
 </CodeGroup>
@@ -67,7 +67,7 @@ OpenGeometry includes built-in TypeScript definitions, so no additional types ar
 
 ## WebAssembly Setup
 
-OpenGeometry uses WebAssembly for high-performance geometric computations. The WASM file needs to be initialized before you can use the library.
+OpenGeometry uses WebAssembly for high-performance geometric computations. The WASM file is needed when the code is executed.
 
 ### Development Setup
 
@@ -98,8 +98,11 @@ module.exports = {
 Create a simple test file to verify your installation:
 
 ```typescript
-import { Cuboid, Vector3 } from 'opengeometry';
+import { OpenGeometry, Cuboid, Vector3 } from 'opengeometry';
 import * as THREE from 'three';
+
+// Initialize OpenGeometry
+await OpenGeometry.create({});
 
 // Create a simple test cuboid
 const cuboid = new Cuboid({

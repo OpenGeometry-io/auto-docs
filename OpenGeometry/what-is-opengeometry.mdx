@@ -9,17 +9,17 @@ OpenGeometry is a high-performance CAD kernel for the web that provides 2D and 3
 
 OpenGeometry makes it easy to build sophisticated CAD applications, 3D modeling tools, architectural visualization software, and interactive geometry editors for the web.
 
-OpenGeometry works with Three.js with plans to support other 3D libraries as well.
+OpenGeometry works with Three.js and we have plans to support other 3D libraries as well.
 
-We have a dedicated Toolkit for Architects and Interior Designers called OpenPlans, which is built on top of OpenGeometry and can be used to create floor plans and 3D models of buildings.
+We have a dedicated Toolkit for Architects and Interior Designers called OpenPlans, which is built on top of OpenGeometry and can be used to create floor plans and 3D models of buildings in browser.
 
 <Tip>
-Check out [OpenPlans](https://openplans.io) for more information.
+Read the [OpenPlans introduction](/OpenPlans/introduction) to see what is coming next.
 </Tip>
 
 ## Why OpenGeometry?
 
-Building CAD applications for the web has traditionally required complex server-side processing or compromising on performance. OpenGeometry changes that:
+Building CAD applications for the web has traditionally required complex server-side processing or compromising on performance. OpenGeometry changes tha by providing.
 
 - **High Performance**: Rust-compiled WASM delivers near-native speed for geometric operations
 - **Browser-Native**: No server required - all computation happens client-side
@@ -31,7 +31,7 @@ Building CAD applications for the web has traditionally required complex server-
 
 ### 2D & 3D Primitives
 
-Create lines, polylines, arcs, curves, and rectangles with simple, intuitive APIs:
+Create lines, polylines, arcs, curves, and rectangles with simple, intuitive APIs.
 
 ```typescript
 const line = new Line({
@@ -43,7 +43,7 @@ const line = new Line({
 
 ### Parametric Shapes
 
-Build complex 3D shapes including cuboids, cylinders, spheres, wedges, and polygons:
+Build complex 3D shapes including cuboids, cylinders, spheres, wedges, and polygons.
 
 ```typescript
 const cuboid = new Cuboid({
@@ -62,7 +62,7 @@ cuboid.outline = true;
 - **Extrusion**: Convert 2D profiles into 3D solids
 - **Sweep**: Create complex shapes by sweeping profiles along paths
 - **Offset**: Generate offset curves and surfaces
-- **Boolean Operations**: Union, intersection, and difference (in progress)
+- **Boolean Operations**: Union, intersection, and subtraction (experimental)
 
 ### BREP Data Access
 
@@ -112,7 +112,7 @@ OpenGeometry enables a wide range of web-based 3D applications:
   <Card
     title="Examples"
     icon="sparkles"
-    href="https://demos.opengeometry.io/src/kernel/index.html"
+    href="https://demos.opengeometry.io/"
   >
     See live interactive examples and demos
   </Card>
@@ -123,5 +123,5 @@ OpenGeometry enables a wide range of web-based 3D applications:
 OpenGeometry is open source and actively developed. Visit the [GitHub repository](https://github.com/OpenGeometry-io/OpenGeometry) to contribute, report issues, or explore the source code.
 
 <Note>
-  OpenGeometry is under active development. Expect frequent updates and new features. The API may change as the project evolves.
+  OpenGeometry is available now and continues to expand. OpenPlans is the upcoming architectural layer in the same ecosystem.
 </Note>

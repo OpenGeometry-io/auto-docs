@@ -1,143 +1,59 @@
 ---
 title: Introduction to OpenPlans
-description: Create 2D floor plans and architectural drawings with Three.js
+description: OpenPlans is the upcoming architectural toolkit built on top of OpenGeometry for floor plans, building elements, and drawing workflows on the web.
 ---
-
-## Welcome to OpenPlans
-
-OpenPlans is a powerful JavaScript library for creating 2D floor plans and architectural drawings using Three.js. Build interactive, web-based CAD applications with a simple and intuitive API.
-
-<Note>
-  OpenPlans is currently under heavy development. Expect frequent updates and breaking changes as we work towards a stable 1.0 release.
-</Note>
 
 ## What is OpenPlans?
 
-OpenPlans provides a comprehensive suite of tools for:
+OpenPlans is the upcoming architectural toolkit in the OpenGeometry ecosystem. It builds on top of OpenGeometry to help you create floor plans, architectural drawings, and building-focused editing workflows in the browser.
 
-- **2D Primitives**: Lines, arcs, rectangles, and polylines for basic drawing operations
-- **3D Shapes**: Cuboids, cylinders, and custom geometries for dimensional modeling
-- **Architectural Elements**: Doors, windows, slabs, and stairs with configurable parameters
-- **Headless Generation**: Generate floor plans programmatically from configuration data
-- **Text Annotations**: Dimension tools and glyph system for labeling and measurements
+<Note>
+  OpenGeometry is available now. OpenPlans is coming soon.
+</Note>
 
-## Core Features
+OpenPlans is designed for teams that need higher-level building tools on top of geometry primitives. Instead of starting from low-level CAD operations, you work with floor-plan concepts, architectural elements, and drawing-ready layout workflows.
 
-<CardGroup cols={2}>
-  <Card title="Element Creation" icon="shapes" href="/api/primitives/line">
-    Create base families and build custom editor tools with primitives and shapes
-  </Card>
-  
-  <Card title="Headless Generation" icon="file-code" href="/guides/json-generation">
-    Generate complete floor plans from JSON data without manual drawing
-  </Card>
-  
-  <Card title="Interactive Controls" icon="hand-pointer" href="/api/utilities/camera">
-    Built-in camera controls and grid system for intuitive navigation
-  </Card>
-  
-  <Card title="Extensible API" icon="puzzle-piece" href="/api/openplans">
-    Clean, chainable API for building complex architectural drawings
-  </Card>
-</CardGroup>
+## What OpenPlans will include
 
-## Use Cases
+OpenPlans will bring together the pieces you need to build browser-based planning and documentation tools:
 
-OpenPlans is ideal for:
+- **2D drawing primitives** for lines, arcs, rectangles, polylines, and plan geometry
+- **Architectural elements** for doors, windows, slabs, stairs, and reusable building components
+- **3D building shapes** for translating plan data into spatial models
+- **Layouts and drawing composition** for paper frames, view placement, and document-style outputs
+- **Annotations and dimensions** for measurements, labels, and drafting context
+- **Headless generation workflows** for creating plans from structured data
+- **Editing foundations** for interactive floor-plan and building configuration tools
 
-- **Real Estate Applications**: Create interactive floor plan viewers for property listings
-- **Architecture & Engineering**: Build web-based design tools for preliminary layouts
-- **Space Planning**: Design office layouts and interior configurations
-- **CAD Applications**: Develop browser-based 2D/3D CAD tools without plugins
+## Why it exists
 
-## Two Ways to Use OpenPlans
+OpenGeometry gives you the geometry kernel. OpenPlans adds the architectural layer.
 
-### 1. Element Creation
+That means you can use OpenGeometry today for primitives, shapes, operations, and exports, then adopt OpenPlans when you need building-specific abstractions and workflows. This keeps the stack consistent across both products.
 
-Create and manipulate architectural elements programmatically:
+## How OpenPlans fits with OpenGeometry
 
-```javascript
-const openPlans = new OpenPlans(container);
-await openPlans.setupOpenGeometry();
+OpenPlans is being developed as a higher-level toolkit for:
 
-// Create primitives
-const wall = openPlans.polyline({
-  points: [[0, 0, 0], [10, 0, 0], [10, 0, 8], [0, 0, 8], [0, 0, 0]],
-  color: 0x000000
-});
+- Architects and interior planning teams
+- Product teams building floor-plan or layout applications
+- Developers who want building elements without assembling every workflow from scratch
 
-// Add architectural elements
-const door = openPlans.baseDoor({
-  doorPosition: [5, 0, 0],
-  doorLength: 2,
-  doorHeight: 1.2
-});
-```
+If you are shipping now, start with OpenGeometry. If you are planning floor-plan, layout, and architectural documentation workflows, OpenPlans is the next layer that is on the way.
 
-### 2. Headless Floor Plan Generation
+## Release status
 
-Generate floor plans programmatically by creating elements from data:
-
-```javascript
-// Create elements from configuration data
-const floorPlanData = {
-  rooms: [
-    { position: [0, 0, 0], width: 5, length: 4 }
-  ],
-  doors: [
-    { position: [2.5, 0, 0], length: 1, height: 2.1 }
-  ]
-};
-
-// Generate elements from data
-floorPlanData.rooms.forEach(room => {
-  openPlans.baseSlab({
-    slabPosition: room.position,
-    coordinates: [[0, 0, 0], [room.width, 0, 0], [room.width, 0, room.length], [0, 0, room.length]]
-  });
-});
-
-floorPlanData.doors.forEach(door => {
-  openPlans.baseDoor({
-    doorPosition: door.position,
-    doorLength: door.length,
-    doorHeight: door.height
-  });
-});
-```
-
-## Ready to Get Started?
-
-<CardGroup cols={2}>
-  <Card title="Installation" icon="download" href="/installation">
-    Install OpenPlans and set up your development environment
-  </Card>
-  
-  <Card title="Quick Start" icon="rocket" href="/quickstart">
-    Build your first floor plan in minutes
-  </Card>
-</CardGroup>
-
-## About the Project
-
-OpenPlans is part of the OpenGeometry ecosystem, a collection of open-source tools for computational geometry and architectural design.
+OpenGeometry documentation in this site reflects the product that is available now. The OpenPlans section is a preview of what is coming next.
 
 <Info>
-  OpenPlans is licensed under MIT and maintained by the OpenGeometry team. Contributions are welcome!
+  We will expand this section as OpenPlans approaches release. For now, use this page as the product overview and OpenGeometry as the production-ready foundation.
 </Info>
 
----
-
-<CardGroup cols={3}>
-  <Card title="API Reference" icon="code" href="/api/openplans">
-    Explore the complete API documentation
+<CardGroup cols={2}>
+  <Card title="OpenGeometry docs" icon="cube" href="/OpenGeometry/what-is-opengeometry">
+    Explore the released geometry kernel and start building today
   </Card>
-  
-  <Card title="Examples" icon="folder-open" href="/examples/basic-floor-plan">
-    Browse working examples and code samples
-  </Card>
-  
-  <Card title="GitHub" icon="github" href="https://github.com/OpenGeometry-io/OpenPlans">
-    View source code and contribute
+  <Card title="OpenPlans repository" icon="github" href="https://github.com/OpenGeometry-io/OpenPlans">
+    Follow development and track upcoming architectural toolkit work
   </Card>
 </CardGroup>
