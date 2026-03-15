@@ -152,7 +152,16 @@
           }
         ]
       }
-    ]
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "llms.txt",
+          "href": "/llms.txt",
+          "icon": "file"
+        }
+      ]
+    }
   },
   "logo": {
     "light": "/logo/logoDark.png",
