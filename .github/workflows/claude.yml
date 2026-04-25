@@ -43,8 +43,9 @@ jobs:
           additional_instructions: |
             Read .claude/agents/docs-author.md for the theme, voice, and
             component rules. Apply them to every change.
-            When the user asks you to regenerate a product, prefer to
-            advise them to use the workflow_dispatch on generate-docs.yml
-            so the change is grounded in source. Only do an in-place edit
-            from the comment thread when the request is small (a single
-            page, a wording fix, or a navigation tweak).
+            When the user asks you to regenerate a product, advise them
+            to run the /generate-docs skill in Claude Code locally — it
+            clones the source repo, extracts the API surface, and authors
+            the MDX. Only do an in-place edit from the comment thread when
+            the request is small (a single page, a wording fix, or a
+            navigation tweak).
