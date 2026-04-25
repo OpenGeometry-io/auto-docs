@@ -1,0 +1,55 @@
+# @claude mention responder for issues and PRs in auto-docs.
+#
+# This is the conversational entrypoint. Type `@claude regenerate OpenPlans`
+# (or any other instruction) in an issue or PR comment and Claude will run
+# inside this repo with read/write access scoped to the product folders.
+#
+# Programmatic, automated regeneration is handled separately by
+# generate-docs.yml. This workflow is for human-in-the-loop fixes,
+# clarifications, and one-off rewrites.
+
+name: Claude
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+  issues:
+    types: [opened, assigned]
+
+concurrency:
+  group: claude-${{ github.event.issue.number || github.event.pull_request.number }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  claude:
+    if: |
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Persona is shared with the headless generator so behavior stays
+          # consistent whether you trigger via dispatch or via a comment.
+          additional_instructions: |
+            Read auto-docs/.claude/agents/docs-author.md for the theme,
+            voice, and component rules. Apply them to every change.
+            When the user asks you to regenerate a product, prefer to
+            advise them to use the workflow_dispatch on generate-docs.yml
+            so the change is grounded in source. Only do an in-place edit
+            from the comment thread when the request is small (a single
+            page, a wording fix, or a navigation tweak).
