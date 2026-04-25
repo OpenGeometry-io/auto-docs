@@ -1,12 +1,7 @@
 # @claude mention responder for issues and PRs in auto-docs.
 #
-# This is the conversational entrypoint. Type `@claude regenerate OpenPlans`
-# (or any other instruction) in an issue or PR comment and Claude will run
-# inside this repo with read/write access scoped to the product folders.
-#
-# Programmatic, automated regeneration is handled separately by
-# generate-docs.yml. This workflow is for human-in-the-loop fixes,
-# clarifications, and one-off rewrites.
+# Type `@claude <instruction>` in any issue or PR comment and Claude will
+# run with read/write access scoped to the product folders.
 
 name: Claude
 
@@ -42,12 +37,10 @@ jobs:
 
       - uses: anthropics/claude-code-action@v1
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          # Persona is shared with the headless generator so behavior stays
-          # consistent whether you trigger via dispatch or via a comment.
+          anthropic_api_key: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           additional_instructions: |
-            Read auto-docs/.claude/agents/docs-author.md for the theme,
-            voice, and component rules. Apply them to every change.
+            Read .claude/agents/docs-author.md for the theme, voice, and
+            component rules. Apply them to every change.
             When the user asks you to regenerate a product, prefer to
             advise them to use the workflow_dispatch on generate-docs.yml
             so the change is grounded in source. Only do an in-place edit

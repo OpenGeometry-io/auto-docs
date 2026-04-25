@@ -2,21 +2,11 @@
 # OpenPlans) by reading source code from its upstream repository and rewriting
 # MDX under that product's folder in this repo.
 #
-# This is the central piece of the docs pipeline. Trigger paths:
-#
-#   1. repository_dispatch (event_type: docs:generate)
-#      Fired by .github/workflows/notify-docs.yml in the source product repos
-#      whenever public source files change on main. Payload:
-#        { product: "OpenGeometry" | "OpenPlans",
-#          ref: "<sha>",
-#          files_changed: ["src/foo.ts", ...] }
-#
-#   2. workflow_dispatch
-#      Manual run from the Actions tab. Pick the product and an optional ref
-#      (defaults to the source repo's main HEAD).
+# Trigger: workflow_dispatch only (manual run from the Actions tab).
+# Pick the product and an optional ref (defaults to the source repo's main HEAD).
 #
 # Output is always a pull request titled
-#   docs(<product>): regenerate API reference from <short-ref>
+#   docs(<product>): regenerate API reference
 # Mintlify deploys when the PR merges.
 
 name: Generate docs
@@ -88,18 +78,12 @@ jobs:
           echo "ref=$REF"                    >> "$GITHUB_OUTPUT"
           echo "scope=$SCOPE"                >> "$GITHUB_OUTPUT"
 
-          # files_changed is informational; we feed it to the agent so it can
-          # focus on impacted pages instead of rebuilding everything.
           if [ -n "${DISPATCH_FILES:-}" ] && [ "${DISPATCH_FILES}" != "null" ]; then
             echo "$DISPATCH_FILES" > "$RUNNER_TEMP/files_changed.json"
           else
             echo '[]' > "$RUNNER_TEMP/files_changed.json"
           fi
 
-      # We use a GitHub App for short-lived, scoped tokens. If you haven't set
-      # up the App yet, comment this step out and substitute a fine-grained
-      # PAT in `secrets.AUTO_DOCS_BOT_TOKEN` (see AUTO_DOCS_PIPELINE.md). The
-      # rest of the workflow doesn't care which token it gets.
       - name: Mint installation token
         id: app-token
         uses: actions/create-github-app-token@v2
@@ -110,8 +94,6 @@ jobs:
           repositories: |
             auto-docs
             ${{ steps.inputs.outputs.product }}
-        # If the App secrets are missing the step is skipped and we fall back
-        # to AUTO_DOCS_BOT_TOKEN below.
         continue-on-error: true
 
       - name: Pick effective token
@@ -129,7 +111,7 @@ jobs:
             echo "value=$PAT_TOKEN" >> "$GITHUB_OUTPUT"
             echo "source=pat" >> "$GITHUB_OUTPUT"
           else
-            echo "::error::No DOCS_BOT_APP_ID/DOCS_BOT_APP_PRIVATE_KEY and no AUTO_DOCS_BOT_TOKEN. See AUTO_DOCS_PIPELINE.md."
+            echo "::error::No DOCS_BOT_APP_ID/DOCS_BOT_APP_PRIVATE_KEY and no AUTO_DOCS_BOT_TOKEN."
             exit 1
           fi
 
@@ -156,7 +138,7 @@ jobs:
 
       - name: Install extractor dependencies
         working-directory: auto-docs
-        run: npm ci --prefix scripts || (cd scripts && npm install --no-audit --no-fund)
+        run: npm ci --prefix scripts
 
       - name: Extract public API surface from source
         id: extract
@@ -168,7 +150,6 @@ jobs:
             --source="$GITHUB_WORKSPACE/source" \
             --out="$RUNNER_TEMP/api-surface.json"
           echo "surface_path=$RUNNER_TEMP/api-surface.json" >> "$GITHUB_OUTPUT"
-          # A tiny digest of what we extracted, for the PR body and logs.
           node auto-docs/scripts/summarize-surface.mjs "$RUNNER_TEMP/api-surface.json" > "$RUNNER_TEMP/surface-summary.md"
 
       - name: Run docs author agent
@@ -181,10 +162,7 @@ jobs:
           API_SURFACE_PATH: ${{ steps.extract.outputs.surface_path }}
           FILES_CHANGED_PATH: ${{ runner.temp }}/files_changed.json
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          # The agent persona, theme rules, and writing standards live in
-          # auto-docs/.claude/agents/docs-author.md. Keep prompt body short;
-          # the persona file is the durable source of truth.
+          anthropic_api_key: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           prompt: |
             You are the OpenGeometry docs author. Read the persona file at
             auto-docs/.claude/agents/docs-author.md before doing anything
@@ -220,8 +198,6 @@ jobs:
             changed to $RUNNER_TEMP/agent-summary.md. The PR body uses it.
           allowed_tools: |
             Read,Write,Edit,MultiEdit,Glob,Grep,Bash(node:*),Bash(npx mint:*)
-          # Restrict file writes so the agent can't escape its product folder.
-          # The base action enforces this if the runner's CWD is auto-docs.
           working_directory: auto-docs
           max_turns: 60
 
@@ -251,8 +227,6 @@ jobs:
         with:
           token: ${{ steps.token.outputs.value }}
           path: auto-docs
-          # One PR per product, reused across runs so rapid edits don't fan
-          # out into many open PRs. Force-push happens inside the action.
           branch: bot/docs/${{ steps.inputs.outputs.product }}
           base: main
           delete-branch: true
@@ -281,7 +255,7 @@ jobs:
 
             </details>
 
-            <sub>Triggered by `${{ github.event_name }}`. See [AUTO_DOCS_PIPELINE.md](./AUTO_DOCS_PIPELINE.md) for how this works.</sub>
+            <sub>Triggered by `${{ github.event_name }}`.</sub>
           labels: |
             docs
             automated
