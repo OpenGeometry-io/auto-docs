@@ -77,6 +77,12 @@
             "tab": "API Reference",
             "groups": [
               {
+                "group": "Core",
+                "pages": [
+                  "OpenGeometry/api/core/opengeometry"
+                ]
+              },
+              {
                 "group": "2D Primitives",
                 "pages": [
                   "OpenGeometry/api/primitives/line",
@@ -90,6 +96,7 @@
                 "group": "3D Shapes",
                 "pages": [
                   "OpenGeometry/api/shapes/polygon",
+                  "OpenGeometry/api/shapes/solid",
                   "OpenGeometry/api/shapes/cylinder",
                   "OpenGeometry/api/shapes/cuboid",
                   "OpenGeometry/api/shapes/sphere",
