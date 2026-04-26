@@ -1,0 +1,126 @@
+---
+title: OpenGeometry
+description: The runtime entrypoint that initializes the WebAssembly module and provides the singleton instance
+icon: rocket
+---
+
+## Overview
+
+`OpenGeometry` is the top-level class you initialize before using any kernel-backed API. It loads and caches the WebAssembly binary, exposes version information, and provides an optional debug mode.
+
+**Use cases:**
+- Bootstrap the wasm runtime once at application startup.
+- Gate geometry construction behind `await OpenGeometry.create(...)` to guarantee the wasm module is ready.
+- Enable debug rendering to inspect face normals and geometry orientation during development.
+
+## Initialization
+
+`OpenGeometry` is a singleton — call `create` once and reuse the returned instance.
+
+```ts
+import { OpenGeometry } from "opengeometry";
+
+const og = await OpenGeometry.create({
+  wasmURL: "/opengeometry_bg.wasm",
+});
+```
+
+## `OpenGeometry.create` (static)
+
+Asynchronously initializes the wasm runtime. Subsequent calls return the cached singleton without re-initializing.
+
+```ts
+static async create(options: OpenGeometryOptions): Promise<OpenGeometry>
+```
+
+Call this before constructing `Vector3` or any kernel-backed wrapper.
+
+### Parameters
+
+<ParamField path="options" type="OpenGeometryOptions">
+  Configuration object for the runtime. All fields are optional.
+</ParamField>
+
+<ParamField path="options.wasmURL" type="string">
+  URL to the `opengeometry_bg.wasm` binary. When omitted, the module resolves the wasm file from a default relative path.
+</ParamField>
+
+<ParamField path="options.debugMeshes" type="boolean" default="false">
+  Enable debug mesh overlays for visualizing internal geometry structures.
+</ParamField>
+
+## Properties
+
+<ResponseField name="version" type="string">
+  The current version of the `opengeometry` package. Static read-only property — access as `OpenGeometry.version`.
+</ResponseField>
+
+<ResponseField name="instance" type="OpenGeometry | null">
+  The cached singleton set after the first successful `create` call. `null` before initialization. Static property.
+</ResponseField>
+
+<ResponseField name="enableDebug" type="boolean">
+  Enables or disables debug rendering mode. When `true`:
+
+  - Geometry renders with a semi-transparent material.
+  - Each face is colored randomly for visual distinction.
+  - Face normals are shown as overlays.
+
+  Setting this to `true` also logs `"OpenGeometry Debug Mode Enabled"` to the console. Readable and settable after initialization.
+</ResponseField>
+
+## Code examples
+
+### Basic setup
+
+```ts
+import { OpenGeometry, Vector3 } from "opengeometry";
+
+await OpenGeometry.create({ wasmURL: "/opengeometry_bg.wasm" });
+
+// Vector3 and all shape wrappers are now safe to use
+const origin = new Vector3(0, 0, 0);
+```
+
+### Using the cached singleton
+
+```ts
+import { OpenGeometry } from "opengeometry";
+
+// First call — loads the wasm binary
+const og = await OpenGeometry.create({ wasmURL: "/opengeometry_bg.wasm" });
+
+// Subsequent calls return the same instance immediately
+const same = await OpenGeometry.create();
+console.log(og === same); // true
+```
+
+### Enabling debug mode
+
+```ts
+import { OpenGeometry } from "opengeometry";
+
+const og = await OpenGeometry.create({ wasmURL: "/opengeometry_bg.wasm" });
+
+og.enableDebug = true;
+// All subsequently rendered shapes show normals and random face colors
+```
+
+### Checking the version at runtime
+
+```ts
+import { OpenGeometry } from "opengeometry";
+
+console.log(OpenGeometry.version); // e.g. "2.0.3"
+```
+
+## See also
+
+<CardGroup cols={2}>
+  <Card title="Vector3" icon="cube" href="/OpenGeometry/api/core/vector3">
+    The wasm-backed 3D vector used throughout the API
+  </Card>
+  <Card title="Scene management" icon="shapes" href="/OpenGeometry/api/scene/scene-management">
+    Managing collections of geometry entities with OGSceneManager
+  </Card>
+</CardGroup>

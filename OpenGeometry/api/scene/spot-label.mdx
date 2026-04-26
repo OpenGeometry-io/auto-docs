@@ -1,0 +1,66 @@
+---
+title: SpotLabel
+description: A Three.js CSS2D marker for annotating points on geometry in the scene
+icon: hand-pointer
+---
+
+## Overview
+
+`SpotLabel` is a lightweight markup component that renders a small square dot on top of 3D geometry using the Three.js `CSS2DRenderer`. It extends `CSS2DObject` and is positioned in world space like any Three.js object.
+
+**Use cases:**
+- Annotating a specific vertex or point of interest on a shape.
+- Displaying a visual pick indicator during interactive selection workflows.
+
+## Constructor
+
+```ts
+new SpotLabel()
+```
+
+`SpotLabel` takes no arguments. The DOM element (a 3×3 px bordered square) is created internally.
+
+## Code examples
+
+### Adding a spot label to a scene
+
+```ts
+import { OpenGeometry, Vector3, SpotLabel } from "opengeometry";
+import { CSS2DRenderer } from "three/examples/jsm/renderers/CSS2DRenderer.js";
+
+await OpenGeometry.create({ wasmURL: "/opengeometry_bg.wasm" });
+
+// Set up CSS2DRenderer alongside your WebGLRenderer
+const labelRenderer = new CSS2DRenderer();
+labelRenderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(labelRenderer.domElement);
+
+// Create and position the label
+const label = new SpotLabel();
+label.position.set(2, 1, 0); // world-space coordinates
+
+scene.add(label);
+
+// Render both in your animation loop
+function animate() {
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+  labelRenderer.render(scene, camera);
+}
+animate();
+```
+
+<Note>
+`SpotLabel` requires a `CSS2DRenderer` alongside your `WebGLRenderer`. The label is a DOM element that the `CSS2DRenderer` projects into screen space each frame.
+</Note>
+
+## See also
+
+<CardGroup cols={2}>
+  <Card title="Scene management" icon="shapes" href="/OpenGeometry/api/scene/scene-management">
+    Managing geometry entities with OGSceneManager
+  </Card>
+  <Card title="OpenGeometry" icon="rocket" href="/OpenGeometry/api/core/opengeometry">
+    Initialize the runtime before constructing wasm-backed objects
+  </Card>
+</CardGroup>
