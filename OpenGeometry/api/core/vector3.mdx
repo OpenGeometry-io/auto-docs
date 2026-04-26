@@ -1,0 +1,91 @@
+---
+title: Vector3
+description: The wasm-backed 3D vector used as the coordinate type throughout the OpenGeometry API
+icon: cube
+---
+
+## Overview
+
+`Vector3` is the shared coordinate type used across all OpenGeometry primitives, shapes, and operations. It is backed by the WebAssembly kernel, so the wasm module must be initialized with `OpenGeometry.create(...)` before you construct any `Vector3` instance.
+
+**Use cases:**
+- Supplying start, end, center, or direction coordinates to primitive and shape constructors.
+- Passing position arguments to `OGSceneManager` projection and export methods.
+
+<Warning>
+Constructing `Vector3` before `await OpenGeometry.create(...)` resolves will throw a wasm initialization error. Always await initialization first.
+</Warning>
+
+## Constructor
+
+```ts
+new Vector3(x: number, y: number, z: number)
+```
+
+### Parameters
+
+<ParamField path="x" type="number" required>
+  The X component of the vector.
+</ParamField>
+
+<ParamField path="y" type="number" required>
+  The Y component of the vector.
+</ParamField>
+
+<ParamField path="z" type="number" required>
+  The Z component of the vector.
+</ParamField>
+
+## Code examples
+
+### Creating vectors after initialization
+
+```ts
+import { OpenGeometry, Vector3 } from "opengeometry";
+
+await OpenGeometry.create({ wasmURL: "/opengeometry_bg.wasm" });
+
+const origin = new Vector3(0, 0, 0);
+const tip    = new Vector3(10, 0, 0);
+```
+
+### Using Vector3 with a primitive
+
+```ts
+import { OpenGeometry, Vector3, Line } from "opengeometry";
+
+await OpenGeometry.create({ wasmURL: "/opengeometry_bg.wasm" });
+
+const line = new Line({
+  start: new Vector3(0, 0, 0),
+  end:   new Vector3(5, 5, 0),
+  color: 0x000000,
+});
+```
+
+### Using Vector3 with a 3D shape
+
+```ts
+import { OpenGeometry, Vector3, Cuboid } from "opengeometry";
+
+await OpenGeometry.create({ wasmURL: "/opengeometry_bg.wasm" });
+
+const box = new Cuboid({
+  center: new Vector3(0, 0.5, 0),
+  width:  2,
+  height: 1,
+  depth:  1,
+  color:  0x10b981,
+});
+```
+
+## See also
+
+<CardGroup cols={2}>
+  <Card title="OpenGeometry" icon="rocket" href="/OpenGeometry/api/core/opengeometry">
+    Initialize the runtime before constructing Vector3
+  </Card>
+  <Card title="Line" icon="minus" href="/OpenGeometry/api/primitives/line">
+    A simple line primitive defined by two Vector3 points
+  </Card>
+</CardGroup>

@@ -4,17 +4,17 @@
   "projectDescription": "A high-performance CAD kernel for the web, providing 2D/3D geometric primitives and CAD operations via WebAssembly.",
   "theme": "almond",
   "primaryColor": "#4460FF",
-  "lightColor": null,
-  "darkColor": null,
+  "lightColor": "#4460FF",
+  "darkColor": "#4460FF",
   "navigation": {
     "tabs": [
       {
         "tab": "Documentation",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Introduction",
             "pages": [
-              "introduction",
+              "what-is-opengeometry",
               "installation",
               "quickstart"
             ]
@@ -23,15 +23,11 @@
             "group": "Core Concepts",
             "pages": [
               "concepts/architecture",
-              "concepts/brep",
-              "concepts/scene-graph"
-            ]
-          },
-          {
-            "group": "Integration",
-            "pages": [
-              "integration/threejs",
-              "integration/examples"
+              "concepts/primitives-and-shapes",
+              "concepts/operations",
+              "concepts/booleans",
+              "concepts/exports",
+              "concepts/brep"
             ]
           }
         ]
@@ -57,7 +53,8 @@
               "api/shapes/cuboid",
               "api/shapes/sphere",
               "api/shapes/wedge",
-              "api/shapes/sweep"
+              "api/shapes/sweep",
+              "api/shapes/opening"
             ]
           },
           {
@@ -66,15 +63,32 @@
               "api/operations/extrude",
               "api/operations/offset",
               "api/operations/sweep",
-              "api/operations/triangulate"
+              "api/operations/triangulate",
+              "api/operations/boolean-operations"
             ]
           },
           {
-            "group": "Scene & Export",
+            "group": "Export (Experimental)",
+            "pages": [
+              "api/export/stl",
+              "api/export/ifc",
+              "api/export/pdf",
+              "api/export/step",
+              "api/export/projection"
+            ]
+          },
+          {
+            "group": "Scene",
             "pages": [
               "api/scene/scene-management",
-              "api/export/projection",
-              "api/export/pdf"
+              "api/scene/spot-label"
+            ]
+          },
+          {
+            "group": "Core",
+            "pages": [
+              "api/core/opengeometry",
+              "api/core/vector3"
             ]
           }
         ]
@@ -84,29 +98,26 @@
   "keyFeatures": [
     "WebAssembly-powered geometric kernel written in Rust",
     "2D primitives: lines, arcs, rectangles, polylines, curves",
-    "3D shapes: polygons, cylinders, cuboids, spheres, wedges",
-    "CAD operations: extrusion, offset, sweep, triangulation",
+    "3D shapes: polygons, cylinders, cuboids, spheres, wedges, sweep, openings",
+    "CAD operations: extrusion, offset, sweep, triangulate, boolean operations",
     "BREP (Boundary Representation) data structure",
-    "Scene graph management for complex models",
-    "Export to PDF with projection support",
-    "Three.js integration layer"
+    "Scene management via OGSceneManager",
+    "3D-to-2D projection with hidden line removal",
+    "Export to STL, STEP, IFC, PDF",
+    "Three.js integration layer with CSS2D markup support"
   ],
   "publicApiSurface": [
-    "OGLine",
-    "OGArc",
-    "OGRectangle",
-    "OGPolyline",
-    "OGCurve",
-    "OGPolygon",
-    "OGCylinder",
-    "OGCuboid",
-    "OGSphere",
-    "OGWedge",
-    "OGScene",
-    "Brep",
-    "extrude_polygon_by_buffer_geometry",
-    "offset_polygon",
-    "sweep_operation",
-    "triangulate_polygon"
-  ]
+    "OpenGeometry",
+    "OpenGeometryOptions",
+    "Vector3",
+    "OGSceneManager",
+    "SpotLabel",
+    "OUTLINE_TYPE",
+    "OGStlExportResult",
+    "OGStepExportResult",
+    "OGIfcExportResult"
+  ],
+  "extractedAt": "2026-04-26T00:10:00.661Z",
+  "sourceRef": "HEAD",
+  "entryFile": "main/opengeometry-three/index.ts"
 }

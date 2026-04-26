@@ -114,7 +114,22 @@
                   "OpenGeometry/api/export/stl",
                   "OpenGeometry/api/export/ifc",
                   "OpenGeometry/api/export/pdf",
-                  "OpenGeometry/api/export/step"
+                  "OpenGeometry/api/export/step",
+                  "OpenGeometry/api/export/projection"
+                ]
+              },
+              {
+                "group": "Scene",
+                "pages": [
+                  "OpenGeometry/api/scene/scene-management",
+                  "OpenGeometry/api/scene/spot-label"
+                ]
+              },
+              {
+                "group": "Core",
+                "pages": [
+                  "OpenGeometry/api/core/opengeometry",
+                  "OpenGeometry/api/core/vector3"
                 ]
               }
             ]
